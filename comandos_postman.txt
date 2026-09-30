@@ -1,0 +1,95 @@
+TESTE DA API NO POSTMAN
+
+1. Iniciar a API
+No terminal, na pasta do projeto, execute:
+python app.py
+
+Endereco base:
+http://127.0.0.1:5000
+
+Para enviar JSON, selecione Body > raw > JSON.
+
+2. Cadastrar usuario
+Metodo: POST
+URL: http://127.0.0.1:5000/users/register
+Body:
+{
+  "username": "teste",
+  "password": "123456"
+}
+
+3. Fazer login e obter o token
+Metodo: POST
+URL: http://127.0.0.1:5000/users/login
+Body:
+{
+  "username": "teste",
+  "password": "123456"
+}
+
+Copie o valor de access_token retornado. Nas requisicoes protegidas,
+abra Authorization, escolha Bearer Token e cole o token.
+
+4. Consultar usuario
+Metodo: GET
+URL: http://127.0.0.1:5000/users/1
+Requer token Bearer.
+
+5. Atualizar usuario
+Metodo: PUT
+URL: http://127.0.0.1:5000/users/1
+Requer token Bearer.
+Body:
+{
+  "username": "teste_novo",
+  "password": "654321"
+}
+
+6. Criar formulario
+Metodo: POST
+URL: http://127.0.0.1:5000/formularios/
+Requer token Bearer.
+Body:
+{
+  "nome": "Nome Teste",
+  "email": "teste@email.com",
+  "data_nascimento": "2000-01-15",
+  "cpf": "12345678900",
+  "genero": "Nao informado"
+}
+
+7. Consultar formulario
+Metodo: GET
+URL: http://127.0.0.1:5000/formularios/1
+Requer token Bearer.
+
+8. Atualizar formulario
+Metodo: PUT
+URL: http://127.0.0.1:5000/formularios/1
+Requer token Bearer.
+Body:
+{
+  "nome": "Nome Atualizado",
+  "email": "atualizado@email.com",
+  "data_nascimento": "2000-01-15",
+  "cpf": "12345678900",
+  "genero": "Nao informado"
+}
+
+9. Excluir formulario
+Metodo: DELETE
+URL: http://127.0.0.1:5000/formularios/1
+Requer token Bearer.
+
+10. Excluir usuario
+Metodo: DELETE
+URL: http://127.0.0.1:5000/users/1
+Requer token Bearer.
+
+Observacoes:
+- Cadastro e login nao precisam de token.
+- As demais rotas precisam do token obtido no login.
+- Troque o ID 1 pelo ID do usuario/formulario que deseja acessar.
+- A API nao retorna os IDs ao cadastrar. Em um banco novo, normalmente
+  o primeiro registro recebe ID 1.
+- Crie o formulario antes de testar consulta, atualizacao ou exclusao.
